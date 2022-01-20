@@ -369,7 +369,7 @@ background-color: rgb(83, 83, 83);</string>
                 <string>Valor Bruto de Salarios</string>
                </property>
                <property name="text">
-                <string>0</string>
+                <string>0.00</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -413,7 +413,7 @@ background-color: rgb(83, 83, 83);</string>
                 <string>Valor Descuento</string>
                </property>
                <property name="text">
-                <string>0</string>
+                <string>0.00</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -457,7 +457,7 @@ background-color: rgb(83, 83, 83);</string>
                 <string>Valor Salario Neto</string>
                </property>
                <property name="text">
-                <string>0</string>
+                <string>0.00</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -488,6 +488,11 @@ background-color: rgb(83, 83, 83);</string>
     </rect>
    </property>
    <widget class="QMenu" name="menuArchivo">
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+     </font>
+    </property>
     <property name="title">
      <string>&amp;Archivo</string>
     </property>
@@ -500,6 +505,11 @@ background-color: rgb(83, 83, 83);</string>
     <addaction name="actionSalir"/>
    </widget>
    <widget class="QMenu" name="menuMenu_Ayuda">
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+     </font>
+    </property>
     <property name="title">
      <string>Ay&amp;uda</string>
     </property>
@@ -516,6 +526,12 @@ background-color: rgb(83, 83, 83);</string>
   <action name="actionNuevo">
    <property name="text">
     <string>&amp;Nuevo</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Consolas</family>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
@@ -539,7 +555,7 @@ background-color: rgb(83, 83, 83);</string>
   </action>
   <action name="actioncalcular">
    <property name="text">
-    <string>calcular</string>
+    <string>Calcular</string>
    </property>
    <property name="shortcut">
     <string>F1</string>

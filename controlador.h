@@ -25,7 +25,7 @@ public:
 
 signals:
 private:
-   Obrero *m_obrero;
+    Obrero *m_obrero;
 
 
 };

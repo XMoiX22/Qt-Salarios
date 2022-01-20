@@ -25,18 +25,18 @@ void Salarios::limpiar()
 void Salarios::calcular()
 {
     if(ui->inNombre->text()==""){
-        ui->statusbar->showMessage("Ingrese Un Nombre Valido...",3500);
+        ui->statusbar->showMessage("Ingrese Un Nombre Valido...",4000);
 
         QMessageBox::warning(this,"Error","El Nombre No Es Valido");
         return;
     }
     else if((ui->inMatutina->isChecked()==false&&ui->inNocturna->isChecked()==false&&ui->inVespertina->isChecked()==false)){
-        ui->statusbar->showMessage("Se Necesita Conocer La Jornada Laboral",3500);
+        ui->statusbar->showMessage("Se Necesita Conocer La Jornada Laboral",4000);
         QMessageBox::warning(this,"Error","Es Necesario Escoger La Jornada Laboral...");
         return;
     }
     else if(ui->inHoras->value()==0){
-        ui->statusbar->showMessage("El Numero de Horas No Puede Ser 0",3500);
+        ui->statusbar->showMessage("El Numero de Horas No Puede Ser 0",4000);
         QMessageBox::warning(this,"Error","No Es Valido 0 Horas De Trabajo.");
         return;
     }
@@ -115,7 +115,7 @@ void Salarios::guardar()
         salida.operator<<("Descuento Total: "+QString::number(m_controlador->m_totalIESS)+"\n");
         salida.operator<<("Salario Neto: "+QString::number(m_controlador->m_totalNeto)+"\n");
         salida.operator<<("//////////");
-        ui->statusbar->showMessage("Datos Almacenados en "+nombreArchivo,3500);
+        ui->statusbar->showMessage("Datos Almacenados en "+nombreArchivo,4000);
     }
     else{
         QMessageBox::warning(this,"Advertencia!","Los Datos No Pudieron Ser Guardados");
@@ -152,7 +152,7 @@ void Salarios::abrir()
                 dato+=linea+"\n";
             }
         }
-        //imprimimos los datos en lost  out y settearlos para seguir calculando
+        //imprime los datos en lost  out y setter para seguir calculando
         ui->outResultado->setPlainText(dato);
         linea=entrada.readLine();
         linea=entrada.readLine();
@@ -167,15 +167,15 @@ void Salarios::abrir()
         linea.remove(0,14);
         ui->outTotalNeto->setText(linea);
         m_controlador->m_totalNeto=linea.toDouble();
-        //cargar a la pantalla
+        //Carga la pantalla
 
-        ui->statusbar->showMessage("El Archivo "+nombreArchivo+" Se Leyo Con Exito",3500);
+        ui->statusbar->showMessage("El Archivo "+nombreArchivo+" Se Leyo Con Exito",4000);
     }
     else{
         QMessageBox::warning(this,"Advertencia!","Los Datos no se Pudieron Leer");
-        ui->statusbar->showMessage("El Archivo "+nombreArchivo+" no se Pudo Leer",3500);
+        ui->statusbar->showMessage("El Archivo "+nombreArchivo+" no se Pudo Leer",4000);
     }
-    //cerrar el archivo
+    //Cierra el Archivo
     archivo.close();
 
 }
@@ -190,7 +190,7 @@ void Salarios::on_actionAbrir_triggered()
 void Salarios::on_actionAcerca_de_Salarios_triggered()
 {
     Acerca *dialogo=new Acerca (this);
-    //enviar dato
+    // Enviar datos
     dialogo->setVersion(VERSION);
     dialogo->exec();
 
