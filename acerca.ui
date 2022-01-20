@@ -1,22 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>Acerca</class>
- <widget name="Acerca" class="QDialog">
+ <widget class="QDialog" name="Acerca">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>480</width>
-    <height>640</height>
+    <height>326</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Acerca de Salarios</string>
   </property>
-  <widget name="buttonBox" class="QDialogButtonBox">
+  <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>600</y>
+     <y>290</y>
      <width>461</width>
      <height>32</height>
     </rect>
@@ -26,6 +27,99 @@
    </property>
    <property name="standardButtons">
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblNombre">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>211</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Verdana</family>
+     <pointsize>20</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Salarios 1.1</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblDerechos">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>80</y>
+     <width>271</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>CopyRight 2022 Abdiel Jimenez. Universidad Politecnica Salesiana. All Rights Reserved.</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblIcono">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>240</y>
+     <width>431</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt; font-style:italic; color:#000000;&quot;&gt;Iconos Diseñados por Flat Icon from &lt;/span&gt;&lt;a href=&quot;https://www.flaticon.es/iconos-gratis/salario&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#007af4;&quot;&gt;www.flaticon.es&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblGitHub">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>160</y>
+     <width>211</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Codigo Disponible &lt;a href=&quot;https://github.com/XMoiX22/Qt-Salarios&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#007af4;&quot;&gt;Github&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>80</y>
+     <width>121</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>:/Recursos/gestion-de-proyectos.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>

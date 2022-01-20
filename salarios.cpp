@@ -6,107 +6,122 @@ Salarios::Salarios(QWidget *parent)
     , ui(new Ui::Salarios)
 {
     ui->setupUi(this);
-    m_controlador = new Controlador();
+    m_controlador=new Controlador();
 }
-
 
 Salarios::~Salarios()
 {
     delete ui;
 }
 
-
-void Salarios::on_cmdCalcular_clicked()
-{
-    calcular();
-}
-
 void Salarios::limpiar()
 {
-    ui->inNombre->setText("");
-    ui->inHoras->setValue(0);
-    ui->inMatutino->setChecked(true);
+    ui->inHoras->setValue(8);
+    ui->inNombre->clear();
+    ui->inMatutina->setChecked(true);
     ui->inNombre->setFocus();
-}
-
-void Salarios::guardar()
-{
-    // Abrir cuadro de diálogo para seleccionar ubicación y nombre del archivo.
-    QString nombreArchivo = QFileDialog::getSaveFileName(this,
-                                                         "Guardar datos",
-                                                         QDir::home().absolutePath(),
-                                                         "Archivos de texto (*.txt)");
-    qDebug() << nombreArchivo;
-
-    // Crear un objeto QFile
-    QFile archivo(nombreArchivo);
-    // Abrirlo para escritura
-    if(archivo.open(QFile::WriteOnly | QFile::Truncate)){
-        // Crear un 'stream' de texto
-        QTextStream salida(&archivo);
-        // Enviar los datos del resultado a la salida
-        salida << ui->outResultado->toPlainText();
-        // Mostrar 5 segundo que todo fue bien
-        ui->statusbar->showMessage("Datos almacenados en " + nombreArchivo, 5000);
-    }else {
-       // Mensaje de error si no se puede abrir el archivo
-        QMessageBox::warning(this,
-                             "Guardar datos",
-                             "No se pudo guardar los datos");
-    }
-    // Cerrar el archivo
-    archivo.close();
-
-}
-
-
-void Salarios::on_actionCalcular_triggered()
-{
-    calcular();
 }
 
 void Salarios::calcular()
 {
-    // Obteber datos de la GUI
-    QString nombre = ui->inNombre->text();
-    int horas = ui->inHoras->value();
-    TipoJornada jornada;
-    if (ui->inMatutino->isChecked()){
-        jornada = TipoJornada::Matutina;
-    } else if (ui->inVespertina->isChecked()){
-        jornada = TipoJornada::Vespertina;
-    } else {
-        jornada = TipoJornada::Nocturna;
-    }
+    if(ui->inNombre->text()==""){
+        ui->statusbar->showMessage("Ingrese Un Nombre Valido...",3500);
 
-  // Validar datos correctos
-    if (nombre == "" || horas == 0){
-        /*
-        QMessageBox msgBox;
-        msgBox.setText("El nombre o el número de horas está vacío");
-        msgBox.setIcon(QMessageBox::Warning);
-        msgBox.exec();
-        */
-        QMessageBox::warning(this,"Advertencia","El nombre o el número de horas está vacío");
+        QMessageBox::warning(this,"Error","El Nombre No Es Valido");
+        return;
+    }
+    else if((ui->inMatutina->isChecked()==false&&ui->inNocturna->isChecked()==false&&ui->inVespertina->isChecked()==false)){
+        ui->statusbar->showMessage("Se Necesita Conocer La Jornada Laboral",3500);
+        QMessageBox::warning(this,"Error","Es Necesario Escoger La Jornada Laboral...");
+        return;
+    }
+    else if(ui->inHoras->value()==0){
+        ui->statusbar->showMessage("El Numero de Horas No Puede Ser 0",3500);
+        QMessageBox::warning(this,"Error","No Es Valido 0 Horas De Trabajo.");
         return;
     }
 
-   // Agregar obrero al controlador
-    m_controlador->agregarObrero(nombre, horas, jornada);
-    // Calcular
-    if (m_controlador->calcularSalario()){
-        // muestra los resultados de los calculos del obrero
-        ui->outResultado->appendPlainText(m_controlador->obrero()->toString());
-        // limpiar la interfaz
-        limpiar();
-        // Mostrar mensaje por 5 segundos en la barra de estado
-        ui->statusbar->showMessage("calculos procesados para " + nombre, 5000);
-    }else {
-        QMessageBox::critical(
-                    this,
-                    "Error",
-                    "Error al calcular el salario.");
+
+    QString nombre=ui->inNombre->text();
+    int horas=ui->inHoras->value();
+    TipoJornada jornada;
+    if(ui->inMatutina->isChecked()){
+        jornada=TipoJornada::Matutina;
     }
+    else if(ui->inNocturna->isChecked()){
+        jornada=TipoJornada::Nocturna;
+    }
+    if(ui->inVespertina->isChecked()){
+        jornada=TipoJornada::Vespertina;
+    }
+    m_controlador->agregarObrero(nombre,horas,jornada);
+
+    if(m_controlador->calcularSalario()){
+        ui->outResultado->appendPlainText(m_controlador->obrero()->toString());
+        limpiar();
+    }
+
+}
+
+
+void Salarios::on_cmdCalcular_clicked()
+{
+    calcular();
+    ui->outTotalBruto->setText(QString::number(m_controlador->m_totalBruto,'f',2));
+
+    ui->outTotalIESS->setText(QString::number(m_controlador->m_totalIESS));
+
+
+    ui->outTotalNeto->setText(QString::number(m_controlador->m_totalNeto,'f',2));
+
+}
+
+
+void Salarios::on_actionNuevo_triggered()
+{
+    ui->inHoras->setValue(8);
+    ui->inNombre->clear();
+    ui->outResultado->clear();
+    ui->inMatutina->setChecked(true);
+    ui->inNombre->setFocus();
+    ui->outTotalBruto->setText("0");
+    ui->outTotalIESS->setText("0");
+    ui->outTotalNeto->setText("0");
+    m_controlador->m_totalBruto=0;
+    m_controlador->m_totalIESS=0;
+    m_controlador->m_totalNeto=0;
+}
+
+
+void Salarios::on_actioncalcular_triggered()
+{
+    calcular();
+}
+
+void Salarios::guardar()
+{
+    //abrir cuadro de dialogo para seleccionar ubicacion y nombre del archivo
+    QString nombreArchivo = QFileDialog::getSaveFileName(this,"Guardar Datos",QDir::home().absolutePath(),"Archivo de Salarios .slr (*.slr)");
+    //crear un objeto QFile
+
+    QFile archivo(nombreArchivo);
+    //abrir para escritura
+    if(archivo.open(QFile::WriteOnly|QFile::Truncate)){
+        QTextStream salida(&archivo);
+        salida<<ui->outResultado->toPlainText();
+        salida.operator<<("\n/////////////\n");
+        salida.operator<<("Total:\n");
+        salida.operator<<("Salario Bruto: "+QString::number(m_controlador->m_totalBruto)+"\n");
+        salida.operator<<("Descuento Total: "+QString::number(m_controlador->m_totalIESS)+"\n");
+        salida.operator<<("Salario Neto: "+QString::number(m_controlador->m_totalNeto)+"\n");
+        salida.operator<<("//////////");
+        ui->statusbar->showMessage("Datos Almacenados en "+nombreArchivo,3500);
+    }
+    else{
+        QMessageBox::warning(this,"Advertencia!","Los Datos No Pudieron Ser Guardados");
+    }
+    //cerrar el archivo
+    archivo.close();
 }
 
 
@@ -115,9 +130,75 @@ void Salarios::on_actionGuardar_triggered()
     guardar();
 }
 
-
-void Salarios::on_actionNuevo_triggered()
+void Salarios::abrir()
 {
-    limpiar();
-    ui->outResultado->clear();
+    //abrir cuadro de dialogo para seleccionar ubicacion y nombre del archivo
+    QString nombreArchivo = QFileDialog::getOpenFileName(this,"Abrir Archivos",QDir::home().absolutePath(),"Archivo de Salarios .slr (*.slr)");
+    //crear un objeto QFile
+
+    QFile archivo(nombreArchivo);
+    //abrir para lectura
+    if(archivo.open(QFile::ReadOnly)){
+        QTextStream entrada(&archivo);
+        //leer todo el contenido
+        ui->outResultado->clear();
+        QString dato="",linea;
+
+        // while(entrada.readLine()!="/////////////"){
+        //definimos limites en la impresion
+        while(entrada.atEnd()==false&&linea!="/////////////"){
+            linea=entrada.readLine();
+            if(linea=="/////////////"){}else{
+                dato+=linea+"\n";
+            }
+        }
+        //imprimimos los datos en lost  out y settearlos para seguir calculando
+        ui->outResultado->setPlainText(dato);
+        linea=entrada.readLine();
+        linea=entrada.readLine();
+        linea.remove(0,15);
+        ui->outTotalBruto->setText(linea);
+        m_controlador->m_totalBruto=linea.toDouble();
+        linea=entrada.readLine();
+        linea.remove(0,16);
+        ui->outTotalIESS->setText(linea);
+        m_controlador->m_totalIESS=linea.toDouble();
+        linea=entrada.readLine();
+        linea.remove(0,14);
+        ui->outTotalNeto->setText(linea);
+        m_controlador->m_totalNeto=linea.toDouble();
+        //cargar a la pantalla
+
+        ui->statusbar->showMessage("El Archivo "+nombreArchivo+" Se Leyo Con Exito",3500);
+    }
+    else{
+        QMessageBox::warning(this,"Advertencia!","Los Datos no se Pudieron Leer");
+        ui->statusbar->showMessage("El Archivo "+nombreArchivo+" no se Pudo Leer",3500);
+    }
+    //cerrar el archivo
+    archivo.close();
+
 }
+
+void Salarios::on_actionAbrir_triggered()
+{
+
+    abrir();
+}
+
+
+void Salarios::on_actionAcerca_de_Salarios_triggered()
+{
+    Acerca *dialogo=new Acerca (this);
+    //enviar dato
+    dialogo->setVersion(VERSION);
+    dialogo->exec();
+
+}
+
+
+void Salarios::on_actionSalir_triggered()
+{
+    close();
+}
+

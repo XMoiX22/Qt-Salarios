@@ -6,12 +6,17 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>625</width>
-    <height>345</height>
+    <width>662</width>
+    <height>419</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Salarios</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="recursos.qrc">
+    <normaloff>:/new/prefix1/Recursos/salario.png</normaloff>
+    <disabledoff>:/new/prefix1/Recursos/salario.png</disabledoff>:/new/prefix1/Recursos/salario.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -39,34 +44,71 @@
           <property name="rightMargin">
            <number>0</number>
           </property>
-          <item row="0" column="0">
-           <widget class="QLabel" name="label">
-            <property name="text">
-             <string>Nombre:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="inNombre">
-            <property name="placeholderText">
-             <string>Ingrese el Nombre del Obrero</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
+          <item row="5" column="0">
            <widget class="QLabel" name="label_2">
+            <property name="font">
+             <font>
+              <family>Consolas</family>
+              <pointsize>9</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="statusTip">
+             <string>Cantidad de horas trabajadas</string>
+            </property>
             <property name="text">
              <string>Horas:</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="1">
-           <widget class="QSpinBox" name="inHoras">
-            <property name="maximum">
-             <number>50</number>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label">
+            <property name="font">
+             <font>
+              <family>Consolas</family>
+              <pointsize>9</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
             </property>
-            <property name="singleStep">
-             <number>2</number>
+            <property name="statusTip">
+             <string>Nombre del obrero</string>
+            </property>
+            <property name="text">
+             <string>Nombre:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="inNombre">
+            <property name="font">
+             <font>
+              <family>Consolas</family>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="statusTip">
+             <string>Nombre del Obrero</string>
+            </property>
+            <property name="maxLength">
+             <number>120</number>
+            </property>
+            <property name="placeholderText">
+             <string>Ingrese el Nombre del Obrero</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QSpinBox" name="inHoras">
+            <property name="font">
+             <font>
+              <family>Consolas</family>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="statusTip">
+             <string>Numero Horas Trabajadas</string>
             </property>
             <property name="value">
              <number>8</number>
@@ -77,23 +119,65 @@
         </widget>
        </item>
        <item>
-        <widget class="QGroupBox" name="groupBox">
-         <property name="title">
+        <widget class="QLabel" name="label_3">
+         <property name="font">
+          <font>
+           <family>Consolas</family>
+           <pointsize>9</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
           <string>Jornada</string>
          </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_4" native="true">
+         <property name="statusTip">
+          <string>Jornada Laboral</string>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
-           <widget class="QRadioButton" name="inMatutino">
+           <widget class="QRadioButton" name="inMatutina">
+            <property name="font">
+             <font>
+              <family>Consolas</family>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(0, 0, 0);</string>
+            </property>
             <property name="text">
              <string>Matutina</string>
             </property>
-            <property name="checked">
+            <property name="checkable">
              <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QRadioButton" name="inVespertina">
+            <property name="font">
+             <font>
+              <family>Consolas</family>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(0, 0, 0);</string>
+            </property>
             <property name="text">
              <string>Vespertina</string>
             </property>
@@ -101,6 +185,15 @@
           </item>
           <item>
            <widget class="QRadioButton" name="inNocturna">
+            <property name="font">
+             <font>
+              <family>Consolas</family>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(0, 0, 0);</string>
+            </property>
             <property name="text">
              <string>Nocturna</string>
             </property>
@@ -110,8 +203,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QWidget" name="widget_4" native="true">
+        <widget class="QWidget" name="widget_5" native="true">
          <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="topMargin">
+           <number>0</number>
+          </property>
           <property name="rightMargin">
            <number>0</number>
           </property>
@@ -122,7 +218,7 @@
             </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>184</width>
+              <width>196</width>
               <height>20</height>
              </size>
             </property>
@@ -130,8 +226,21 @@
           </item>
           <item>
            <widget class="QPushButton" name="cmdCalcular">
+            <property name="font">
+             <font>
+              <family>Consolas</family>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="statusTip">
+             <string>Calcular Salario</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(158, 255, 247);
+background-color: rgb(83, 83, 83);</string>
+            </property>
             <property name="text">
-             <string>Calcular</string>
+             <string>&amp;Calcular</string>
             </property>
            </widget>
           </item>
@@ -146,7 +255,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>27</height>
+           <height>1</height>
           </size>
          </property>
         </spacer>
@@ -159,12 +268,209 @@
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <widget class="QPlainTextEdit" name="outResultado">
+         <property name="font">
+          <font>
+           <family>Consolas</family>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="statusTip">
+          <string>Impresion de Salarios</string>
+         </property>
          <property name="readOnly">
           <bool>true</bool>
          </property>
          <property name="placeholderText">
-          <string>Aqui se Mostrara los Calculos de los Salarios...</string>
+          <string>Aqui se Mostraran el Calculo de Salario.</string>
          </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_7" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>200</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_8" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="statusTip">
+             <string>Valor Total</string>
+            </property>
+            <layout class="QFormLayout" name="formLayout_2">
+             <property name="labelAlignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+             <property name="formAlignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_4">
+               <property name="font">
+                <font>
+                 <family>Consolas</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Total:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_5">
+               <property name="font">
+                <font>
+                 <family>Consolas</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="statusTip">
+                <string>Salario Bruto</string>
+               </property>
+               <property name="text">
+                <string>Salario Bruto</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="outTotalBruto">
+               <property name="maximumSize">
+                <size>
+                 <width>120</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Consolas</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="statusTip">
+                <string>Valor Bruto de Salarios</string>
+               </property>
+               <property name="text">
+                <string>0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_6">
+               <property name="font">
+                <font>
+                 <family>Consolas</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="statusTip">
+                <string>Valor IESS</string>
+               </property>
+               <property name="text">
+                <string>IESS</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="outTotalIESS">
+               <property name="maximumSize">
+                <size>
+                 <width>120</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Consolas</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="statusTip">
+                <string>Valor Descuento</string>
+               </property>
+               <property name="text">
+                <string>0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_7">
+               <property name="font">
+                <font>
+                 <family>Consolas</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="statusTip">
+                <string>Valor Salario Neto</string>
+               </property>
+               <property name="text">
+                <string>Salario Neto</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QLineEdit" name="outTotalNeto">
+               <property name="maximumSize">
+                <size>
+                 <width>120</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Consolas</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="statusTip">
+                <string>Valor Salario Neto</string>
+               </property>
+               <property name="text">
+                <string>0</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
@@ -177,47 +483,74 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>625</width>
+     <width>662</width>
      <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuArchivo">
     <property name="title">
-     <string>Archivo</string>
+     <string>&amp;Archivo</string>
     </property>
     <addaction name="actionNuevo"/>
     <addaction name="actionAbrir"/>
     <addaction name="actionGuardar"/>
     <addaction name="separator"/>
-    <addaction name="separator"/>
-    <addaction name="actionCalcular"/>
-    <addaction name="separator"/>
+    <addaction name="actioncalcular"/>
     <addaction name="separator"/>
     <addaction name="actionSalir"/>
    </widget>
-   <widget class="QMenu" name="menuAyuda">
+   <widget class="QMenu" name="menuMenu_Ayuda">
     <property name="title">
-     <string>Ayuda</string>
+     <string>Ay&amp;uda</string>
     </property>
     <addaction name="actionAcerca_de_Salarios"/>
    </widget>
    <addaction name="menuArchivo"/>
-   <addaction name="menuAyuda"/>
+   <addaction name="menuMenu_Ayuda"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="statusTip">
+    <string/>
+   </property>
+  </widget>
   <action name="actionNuevo">
    <property name="text">
-    <string>Nuevo</string>
+    <string>&amp;Nuevo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
    </property>
   </action>
   <action name="actionAbrir">
    <property name="text">
     <string>Abrir</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
   </action>
   <action name="actionGuardar">
    <property name="text">
     <string>Guardar</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actioncalcular">
+   <property name="text">
+    <string>calcular</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </action>
+  <action name="actionSalir">
+   <property name="text">
+    <string>&amp;Salir</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
    </property>
   </action>
   <action name="actionAcerca_de_Salarios">
@@ -225,17 +558,9 @@
     <string>Acerca de Salarios</string>
    </property>
   </action>
-  <action name="actionCalcular">
-   <property name="text">
-    <string>Calcular</string>
-   </property>
-  </action>
-  <action name="actionSalir">
-   <property name="text">
-    <string>Salir</string>
-   </property>
-  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="recursos.qrc"/>
+ </resources>
  <connections/>
 </ui>

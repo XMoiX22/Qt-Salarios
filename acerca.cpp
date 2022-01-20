@@ -12,3 +12,9 @@ Acerca::~Acerca()
 {
     delete ui;
 }
+
+void Acerca::setVersion(const QString &newVersion)
+{
+    m_version = newVersion;
+    this->ui->lblNombre->setText("Salarios "+m_version);
+}

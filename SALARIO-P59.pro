@@ -31,4 +31,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    recursos.qrc
+    Resources.qrc
+
+DISTFILES += \
+    class_diagram.qmodel
